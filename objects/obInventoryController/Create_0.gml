@@ -1,0 +1,1 @@
+//InventoryType = noone;

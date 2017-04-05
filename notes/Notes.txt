@@ -1,0 +1,96 @@
+To do:
+
+
++ Inventory
+	- Inventory and ship "character sheet" will open up on the extreme left of the screen
+	- The "Sheet" will be a black square with 50% opacity (or there about).
+	- At the top a green (?) perspective image of the ship with it's basic stats
+	- Below that a schematic image of the ship with the various upgrade slots (and damage indicators?)
+	- At the bottom a grid with ship's cargo space
+	- Each grid square is 32 x 32 px
+	- Each grid square is an object? Or each item is an object?
+	- What about the guns and stuff that also follow the ship around?!!
+		Maybe they should not? Maybe an offset should be set and then the shots should be fired from
+		with the owner-coordinates as base?
+
+	- Create collision tests for all obPickUp (if Flight mode is turned off?)
+	- The pickup objects should follow the mouse
+	- If a pickup object is released over a slot, the object should become a part of it
+	- If a pickup object is released when the inventory window is off, or outside of it, it
+		should spinn for a while (use friction to slow it down?)
+	- Create scripts for turning the inventory on and off (hiding the objects)
+
+
++ Ship to ship collision (Test!)
+
++ Exit ship (Test!)
+
+
+- Experiment with a particle system for Control Thrusters
+
+- Add sounds for various things (should there be an Audio Controller?):
+	- PCG fireing
+	- Plasma impact
+	- Ship explosion
+	- Ship collision
+	- Pickup object
+	- Enter Airlock
+	- Engine
+
+	
+
+- Jetisson animation (cannot be fully implemented before inventory)
+RotationDirection = choose(5, -5); // This goes in the step event!
+FallOff = 1; // This goes in the step event!
+
+// Rotate the object while it is moving, but slow it down over time
+direction = direction + (RotationDirection / FallOff);
+
+// Also lower the speed gradually
+speed = speed / 1.005;
+
+// Increase the fall off variable to slow down rotation and speed gradually
+FallOff = FallOff + 0.01;
+
+
+- AI behaviour:
+	- Patrol
+	- Roam
+	- Attack
+	- Flee
+	- Enter Ship
+	- Pickup Object
+
+- Zone creation:
+	- Zone Environment (asteroids, scrap field)
+	- Zone Community (space station, pirate base)
+
+
++-----------------------------------------------------------------------------------------------------------
+
+
+* Screen shake
+
+* The suits should not move very fast, and they should probably turn even slower!
+
+* Particle system for Engines
+
+* Check how the pirate is targeting enemies now. I think he targets his own Scimitar ship now
+already before he enters it!
+
+* Fix the plasma impact effect
+
+* Check hitpoints (of the Owner) from each ship to see if the ship should explode
+and a new ship should be created
+
+* A suit needs two sets of stats, one where they store their suit stats (SuitHitPoints) and one
+they use when sitting in a ship (Hitpoints). A ship however only need one set of points.
+
+* Change ShipHitPoints and the like to be just HitPoints. The SuitHitPoints and ShipHitpoints
+are variables where we store the inherent stats, HitPoints is where we store the current stats.
+
+* FireOrder does not seem to work
+	The problem is that the PCG checks it's Owner for fire order, but now the ship is the owner,
+	not the suit!
+
+* image_angle for obPirate
